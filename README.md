@@ -1,8 +1,34 @@
-# React + Vite
+## Installing Cypress
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Install cypress
 
-Currently, two official plugins are available:
+```
+npm install cypress --save-dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Run the following command to initilize Cypress
+
+```
+npx cypress open
+```
+
+In cypress.config.js write the next code
+
+```js
+import { defineConfig } from "cypress";
+
+export default defineConfig({
+  e2e: {
+    baseUrl: "http://localhost:5173",
+    specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
+  },
+});
+```
+
+and finally create in the root of your project the next folder
+
+```
+mkdir cypress
+cd cypress
+mkdir e2e
+```
