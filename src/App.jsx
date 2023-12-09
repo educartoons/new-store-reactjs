@@ -1,29 +1,18 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import "./App.css";
-import Products from "./Products";
+import Login from "./pages/Login";
+import Products from "./pages/Products";
 
 function App() {
-  const [products, setProducts] = useState([]);
-
-  const fetchProducts = async () => {
-    // peticion que haces a un endpoint basada en un metodo del protocolo HTTP
-    const response = await fetch("https://dummyjson.com/products");
-
-    const data = await response.json();
-
-    setProducts(data.products);
-  };
-
-  useEffect(() => {
-    console.log("ejecutandose app");
-    fetchProducts();
-  }, []);
-
   return (
-    <div className="bg-slate-200">
-      <h2>Proyecto en ReactJS</h2>
-      <Products products={products} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/products" element={<Products />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
